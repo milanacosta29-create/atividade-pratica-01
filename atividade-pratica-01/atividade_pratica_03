@@ -1,0 +1,90 @@
+idade = int(input("Digite a idade: "))
+
+if idade >= 0 and idade <= 12:
+    categoria = "Criança"
+elif idade >= 13 and idade <= 17:
+    categoria = "Adolescente"
+elif idade >= 18 and idade <= 59:
+    categoria = "Adulto"
+elif idade >= 60:
+    categoria = "Idoso"
+else:
+    categoria = "Idade inválida"  # Para lidar com idades negativas ou outros casos
+
+print(f"Categoria: {categoria}")
+peso_str = input("Digite seu peso em kg (ex: 70.5): ")
+altura_str = input("Digite sua altura em metros (ex: 1.75): ")
+
+peso = float(peso_str)
+altura = float(altura_str)
+
+imc = peso / (altura ** 2)
+
+if imc < 18.5:
+    classificacao = "Abaixo do peso"
+elif imc < 25:
+    classificacao = "Peso normal"
+elif imc < 30:
+    classificacao = "Sobrepeso"
+else:
+    classificacao = "Obeso"
+
+print(f"IMC: {imc:.2f} - Classificação: {classificacao}")
+
+# Conversão de temperatura
+temperatura = float(input("Digite a temperatura: "))
+unidade_origem = input("Qual a unidade de origem (C, F ou K)? ").upper()
+unidade_destino = input("Para qual unidade deseja converter (C, F ou K)? ").upper()
+
+if unidade_origem == 'C':
+    if unidade_destino == 'F':
+        resultado = (temperatura * 1.8) + 32
+        unidade_final = 'Fahrenheit'
+    elif unidade_destino == 'K':
+        resultado = temperatura + 273.15
+        unidade_final = 'Kelvin'
+    elif unidade_destino == 'C':
+        resultado = temperatura
+        unidade_final = 'Celsius'
+    else:
+        print("Unidade de destino inválida.")
+        exit()
+elif unidade_origem == 'F':
+    if unidade_destino == 'C':
+        resultado = (temperatura - 32) / 1.8
+        unidade_final = 'Celsius'
+    elif unidade_destino == 'K':
+        resultado = ((temperatura - 32) / 1.8) + 273.15
+        unidade_final = 'Kelvin'
+    elif unidade_destino == 'F':
+        resultado = temperatura
+        unidade_final = 'Fahrenheit'
+    else:
+        print("Unidade de destino inválida.")
+        exit()
+elif unidade_origem == 'K':
+    if unidade_destino == 'C':
+        resultado = temperatura - 273.15
+        unidade_final = 'Celsius'
+    elif unidade_destino == 'F':
+        resultado = (temperatura - 273.15) * 1.8 + 32
+        unidade_final = 'Fahrenheit'
+    elif unidade_destino == 'K':
+        resultado = temperatura
+        unidade_final = 'Kelvin'
+    else:
+        print("Unidade de destino inválida.")
+        exit()
+else:
+    print("Unidade de origem inválida.")
+    exit()
+
+print(f"Temperatura convertida: {resultado:.2f} {unidade_final}")
+
+# Verificação de ano bissexto
+ano = int(input("Digite o ano para verificar se é bissexto: "))
+if (ano % 400 == 0) or (ano % 4 == 0 and ano % 100 != 0):
+    status_bissexto = "é um ano bissexto"
+else:
+    status_bissexto = "não é um ano bissexto"
+print(f"O ano {ano} {status_bissexto}.")
